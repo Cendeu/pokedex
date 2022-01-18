@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PokeModel } from '@shared/pokemodel.model';
-
-import { pokeTypes } from '../shared/pokemon.types';
+import { PokeserviceService } from '@shared/pokeservice.service';
 
 @Component({
   selector: 'app-pokecard',
@@ -11,11 +10,13 @@ import { pokeTypes } from '../shared/pokemon.types';
 export class PokecardComponent implements OnInit {
   @Input() pokecard: PokeModel = new PokeModel('', [''], 0, '', '');
 
-  types: {} = {};
+  types: string[] = [];
+  testStyle: { [index: PropertyKey]: any } = {};
 
-  constructor() {
-    this.types = pokeTypes;
+  constructor(private pokeservice: PokeserviceService) {}
+
+  ngOnInit(): void {
+    this.types = this.pokeservice.getTypes(this.pokecard.types);
+    this.testStyle = this.pokeservice.generateGradient(this.pokecard.types);
   }
-
-  ngOnInit(): void {}
 }

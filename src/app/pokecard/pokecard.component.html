@@ -1,7 +1,7 @@
 <!-- A div containing a picture of the pokemon, their type(s) and matching color(s), flavor text and their Pokedex Number -->
 
-<div class="outer-pokecard">
-  <div class="inner-pokecard">
+<div class="outer-pokecard" [ngStyle]="testStyle">
+  <div class="inner-pokecard" [ngStyle]="testStyle">
     <img
       src="{{ pokecard.imageUrl }}"
       alt="{{ pokecard.name }}"
@@ -16,15 +16,7 @@
     <p class="description">
       {{ pokecard.flavorText }}
     </p>
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Pok%C3%A9mon_Grass_Type_Icon.svg"
-      alt="grass type"
-      class="first-type"
-    />
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Pok%C3%A9mon_Grass_Type_Icon.svg"
-      alt="grass type"
-      class="second-type"
-    />
+    <img [src]="types[0]" class="first-type" />
+    <img [src]="types[1]" class="second-type" />
   </div>
 </div>

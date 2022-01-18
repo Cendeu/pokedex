@@ -4,6 +4,7 @@
   border-radius: 1rem;
   padding: 0.7rem;
   max-width: 11rem;
+  margin: 1rem;
 }
 
 .inner-pokecard {
@@ -15,6 +16,7 @@
   width: 100%;
   flex-wrap: wrap;
   position: relative;
+  /* filter: brightness(150%); */
 }
 
 .first-type {
