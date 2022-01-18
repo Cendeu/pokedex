@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PokeModel } from '@shared/pokemodel.model';
+
+import { pokeTypes } from '../shared/pokemon.types';
 
 @Component({
   selector: 'app-pokecard',
   templateUrl: './pokecard.component.html',
-  styleUrls: ['./pokecard.component.css']
+  styleUrls: ['./pokecard.component.css'],
 })
 export class PokecardComponent implements OnInit {
+  @Input() pokecard: PokeModel = new PokeModel('', [''], 0, '', '');
 
-  constructor() { }
+  types: {} = {};
 
-  ngOnInit(): void {
+  constructor() {
+    this.types = pokeTypes;
   }
 
+  ngOnInit(): void {}
 }

@@ -3,19 +3,18 @@
 <div class="outer-pokecard">
   <div class="inner-pokecard">
     <img
-      src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png"
-      alt="bulbasaur"
+      src="{{ pokecard.imageUrl }}"
+      alt="{{ pokecard.name }}"
       class="poke-image"
     />
     <div class="break"></div>
 
     <div class="number-box">
-      <p style="margin: 0">#001</p>
+      <p style="margin: 0">#{{ pokecard.number | number: "3.0-0" }}</p>
     </div>
     <div class="break"></div>
     <p class="description">
-      For some time after its birth, it grows by gaining nourishment from the
-      seed on its back.
+      {{ pokecard.flavorText }}
     </p>
     <img
       src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Pok%C3%A9mon_Grass_Type_Icon.svg"
