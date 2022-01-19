@@ -4,6 +4,9 @@ import { PokeModel } from '@shared/pokemodel.model';
 import { pokeTypes } from './pokemon.types';
 import { typeColors } from './pokemon.types';
 
+import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -13,19 +16,55 @@ export class PokeserviceService {
       'Bulbasaur',
       ['grass', 'poison'],
       1,
-      'For some time after its birth, it grows by gaining nourishment from the seed on its back.',
-      'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png'
+      'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png',
+      ''
     ),
     new PokeModel(
       'Ivysaur',
       ['grass', 'poison'],
       2,
-      "When the bud on its back starts swelling, a sweet aroma wafts to indicate the flower's coming bloom.",
-      'https://assets.pokemon.com/assets/cms2/img/pokedex/full/002.png'
+      'https://assets.pokemon.com/assets/cms2/img/pokedex/full/002.png',
+      ''
     ),
   ];
 
-  constructor() {}
+  updateList = new Subject<PokeModel[]>();
+
+  constructor(private http: HttpClient) {}
+
+  fetchList() {
+    this.http
+      .get('https://pokeapi.co/api/v2/pokemon/')
+      .subscribe((response) => {
+        this.fetchPokemon(response);
+      });
+    console.log(this.pokemonList);
+    this.updateList.next(this.pokemonList.slice());
+  }
+
+  fetchPokemon(pokenames: any) {
+    pokenames.results.forEach((id: any) => {
+      this.http
+        .get(`https://pokeapi.co/api/v2/pokemon/${id.name}`)
+        .subscribe((response) => {
+          this.savePokemon(response);
+        });
+    });
+  }
+
+  savePokemon(pokeObject: any) {
+    let pokemon = new PokeModel(
+      pokeObject.name,
+      [pokeObject.types[0].type.name],
+      pokeObject.id,
+      pokeObject.sprites.front_default,
+      pokeObject.sprites.back_default
+    );
+    if (pokeObject.types.length > 1) {
+      pokemon.types.push(pokeObject.types[1].type.name);
+    }
+    this.pokemonList.push(pokemon);
+  }
 
   getList() {
     let newList: PokeModel[] = this.pokemonList.slice();

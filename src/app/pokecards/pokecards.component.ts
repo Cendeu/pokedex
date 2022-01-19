@@ -13,6 +13,11 @@ export class PokecardsComponent implements OnInit {
   constructor(private pokeservice: PokeserviceService) {}
 
   ngOnInit(): void {
-    this.pokecards = this.pokeservice.getList();
+    this.pokeservice.updateList.subscribe((newList) => {
+      this.pokecards = newList;
+    });
+    this.pokeservice.fetchList;
+
+    console.log(this.pokecards);
   }
 }

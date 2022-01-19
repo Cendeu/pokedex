@@ -1,6 +1,5 @@
 .outer-pokecard {
   display: flex;
-  background-color: #38bf4b;
   border-radius: 1rem;
   padding: 0.7rem;
   max-width: 11rem;
@@ -10,12 +9,12 @@
 .inner-pokecard {
   display: flex;
   height: 16rem;
-  background-color: lightgreen;
   border-radius: 1rem;
   justify-content: center;
   width: 100%;
   flex-wrap: wrap;
   position: relative;
+  background-color: rgba(255, 255, 255, 0.397);
   /* filter: brightness(150%); */
 }
 

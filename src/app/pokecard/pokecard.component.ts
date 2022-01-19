@@ -11,12 +11,12 @@ export class PokecardComponent implements OnInit {
   @Input() pokecard: PokeModel = new PokeModel('', [''], 0, '', '');
 
   types: string[] = [];
-  testStyle: { [index: PropertyKey]: any } = {};
+  cardColor: { [index: PropertyKey]: any } = {};
 
   constructor(private pokeservice: PokeserviceService) {}
 
   ngOnInit(): void {
     this.types = this.pokeservice.getTypes(this.pokecard.types);
-    this.testStyle = this.pokeservice.generateGradient(this.pokecard.types);
+    this.cardColor = this.pokeservice.generateGradient(this.pokecard.types);
   }
 }
