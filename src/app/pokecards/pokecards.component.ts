@@ -8,15 +8,15 @@ import { PokeserviceService } from '../shared/pokeservice.service';
   styleUrls: ['./pokecards.component.css'],
 })
 export class PokecardsComponent implements OnInit {
-  pokecards: PokeModel[] = [];
+  pokecards: [] = [];
 
   constructor(private pokeservice: PokeserviceService) {}
 
   ngOnInit(): void {
-    this.pokeservice.updateList.subscribe((newList) => {
-      this.pokecards = newList;
+    this.pokeservice.updateList.subscribe((list) => {
+      this.pokecards = list;
     });
-    this.pokeservice.fetchList;
+    this.pokeservice.fetchList();
 
     console.log(this.pokecards);
   }

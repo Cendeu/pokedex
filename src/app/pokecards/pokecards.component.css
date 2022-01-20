@@ -1,0 +1,6 @@
+.pokeflex {
+  display: flex;
+  flex-basis: 10rem;
+  flex-wrap: wrap;
+  align-items: stretch;
+}

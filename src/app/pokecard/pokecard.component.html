@@ -3,18 +3,18 @@
 <div class="outer-pokecard" [ngStyle]="cardColor">
   <div class="inner-pokecard">
     <img
-      src="{{ pokecard.imageUrl }}"
-      alt="{{ pokecard.name }}"
+      src="{{ activeCard.imageUrl }}"
+      alt="{{ activeCard.name }}"
       class="poke-image"
     />
     <div class="break"></div>
 
     <div class="number-box">
-      <p style="margin: 0">#{{ pokecard.number | number: "3.0-0" }}</p>
+      <p style="margin: 0">#{{ activeCard.number | number: "3.0-0" }}</p>
     </div>
     <div class="break"></div>
     <p class="description">
-      {{ pokecard.name }}
+      {{ activeCard.name }}
     </p>
     <img [src]="types[0]" class="first-type" />
     <img [src]="types[1]" class="second-type" />
