@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { PokecardComponent } from './pokecard/pokecard.component';
 import { PokecardsComponent } from './pokecards/pokecards.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [AppComponent, PokecardComponent, PokecardsComponent],
@@ -15,6 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatSidenavModule,
+    ScrollingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

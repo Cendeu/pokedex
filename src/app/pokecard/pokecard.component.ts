@@ -32,6 +32,7 @@ export class PokecardComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchPokemon(this.pokecard.url);
+    console.log('fetched pokemon!');
   }
 
   ngOnDestroy(): void {

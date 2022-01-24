@@ -3,7 +3,7 @@ export const pokeTypes: { [index: PropertyKey]: string } = {
   dark: '../../assets/Dark_Type_Icon.svg',
   dragon: '../../assets/Dragon_Type_Icon.svg',
   electric: '../../assets/Electric_Type_Icon.svg',
-  fairy: '../../assets/fairy_Type_Icon.svg',
+  fairy: '../../assets/Fairy_Type_Icon.svg',
   fighting: '../../assets/Fighting_Type_Icon.svg',
   fire: '../../assets/Fire_Type_Icon.svg',
   flying: '../../assets/Flying_Type_Icon.svg',
