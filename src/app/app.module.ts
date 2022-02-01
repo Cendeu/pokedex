@@ -9,6 +9,7 @@ import { PokecardsComponent } from './pokecards/pokecards.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { AngularFittextModule } from 'angular-fittext';
 
 @NgModule({
   declarations: [AppComponent, PokecardComponent, PokecardsComponent],
@@ -19,6 +20,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     HttpClientModule,
     MatSidenavModule,
     ScrollingModule,
+    AngularFittextModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

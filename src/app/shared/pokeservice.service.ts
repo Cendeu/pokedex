@@ -19,7 +19,7 @@ export class PokeserviceService {
 
   fetchList() {
     this.http
-      .get('https://pokeapi.co/api/v2/pokemon/?limit=50')
+      .get('https://pokeapi.co/api/v2/pokemon/?limit=500')
       .subscribe((response: any) => {
         // this.pokemonList = response.
         this.updateList.next(response.results);
