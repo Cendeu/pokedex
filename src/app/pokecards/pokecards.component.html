@@ -1,5 +1,5 @@
 <!-- <div class="pokeflex"> -->
-<cdk-virtual-scroll-viewport class="pokeflex" itemSize="320">
+<cdk-virtual-scroll-viewport appendOnly="true" class="pokeflex" itemSize="320">
   <div class="scroll-row" *cdkVirtualFor="let row of pokecards">
     <app-pokecard *ngFor="let card of row" [pokecard]="card"></app-pokecard>
   </div>
