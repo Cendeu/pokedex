@@ -5,18 +5,27 @@
     <img
       src="{{ activeCard.imageUrl }}"
       alt="{{ activeCard.name }}"
-      class="poke-image"
+      class="front-image"
     />
-    <div class="break"></div>
 
     <div class="number-box">
       <p style="margin: 0">#{{ activeCard.number | number: "3.0-0" }}</p>
     </div>
-    <div class="break"></div>
-    <p class="description">
-      {{ activeCard.name }}
-    </p>
+
+    <img
+      src="{{ activeCard.backImageUrl }}"
+      alt="{{ activeCard.name }}"
+      class="rear-image"
+    />
     <img [src]="types[0]" class="first-type" />
     <img [src]="types[1]" class="second-type" />
+    <div class="left-name-holder">
+      <div [fittext]="true">{{ activeCard.name | titlecase }}</div>
+    </div>
+    <div class="right-name-holder">
+      <div [fittext]="true">
+        {{ activeCard.name | titlecase }}
+      </div>
+    </div>
   </div>
 </div>

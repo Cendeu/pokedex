@@ -4,6 +4,12 @@
   padding: 0.7rem;
   width: 11rem;
   margin: 0.75rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.outer-pokecard:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  transform: translate(0, -2px);
 }
 
 .inner-pokecard {
@@ -12,10 +18,11 @@
   border-radius: 1rem;
   justify-content: center;
   width: 100%;
-  flex-wrap: wrap;
+  flex-direction: column;
   position: relative;
   background-color: rgba(255, 255, 255, 0.397);
-  /* filter: brightness(150%); */
+  justify-content: space-between;
+  align-items: center;
 }
 
 .first-type {
@@ -25,15 +32,15 @@
   left: -0.5rem;
 }
 
-.poke-image {
-  height: 6rem;
-  border-radius: 50%;
-  padding-top: 1rem;
+.front-image {
+  width: 7rem;
+  align-self: flex-end;
+  z-index: 5;
 }
-
-.break {
-  flex-basis: 100%;
-  height: 0;
+.rear-image {
+  width: 7rem;
+  align-self: flex-start;
+  z-index: 5;
 }
 
 .number-box {
@@ -56,4 +63,28 @@
   position: absolute;
   bottom: -0.5rem;
   right: -0.5rem;
+}
+
+.left-name-holder {
+  position: absolute;
+  top: 2rem;
+  left: 0.5rem;
+  width: 3rem;
+  height: 7rem;
+  color: white;
+  writing-mode: vertical-lr;
+  z-index: 4;
+}
+
+.right-name-holder {
+  position: absolute;
+  bottom: 2rem;
+  right: 0rem;
+  width: 3rem;
+  height: 7rem;
+  transform: rotate(180deg);
+  color: white;
+  writing-mode: vertical-lr;
+  text-orientation: sideways;
+  z-index: 4;
 }
