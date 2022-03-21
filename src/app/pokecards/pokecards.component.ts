@@ -19,12 +19,12 @@ export class PokecardsComponent implements OnInit {
   chunkSize: number = 0;
   pokecards: [] = [];
   unformattedPokecards: [] = [];
+
   constructor(
     private pokeservice: PokeserviceService,
     private util: UtilitiesService
-  ) {
-    this.getScreenSize();
-  }
+  ) {}
+
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?: any) {
     this.screenWidth = window.innerWidth;
@@ -36,6 +36,7 @@ export class PokecardsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getScreenSize();
     this.pokeservice.updateList.subscribe((list) => {
       this.unformattedPokecards = list;
       this.pokecards = this.util.chunkArray(

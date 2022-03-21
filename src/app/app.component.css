@@ -11,3 +11,21 @@ mat-sidenav {
   width: 20vw;
   height: 100vh;
 }
+
+.about {
+  color: white;
+  margin: 1rem;
+}
+
+.about h2 {
+  margin-left: 2rem;
+}
+
+.about hr {
+  margin-top: -0.5rem;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  color: white;
+  border-width: 2px;
+}

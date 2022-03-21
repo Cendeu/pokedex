@@ -1,5 +1,128 @@
 <mat-sidenav-container>
-  <mat-sidenav opened mode="side" position="end"> </mat-sidenav>
+  <mat-sidenav opened mode="side" position="end">
+    <div class="about">
+      <h2>Getting a small bit of data, and using it</h2>
+      <hr />
+      <p>
+        This was a small project to pull data from an API, and manipulate it in
+        small ways. So I decided to get pokemon info, and display them as cards.
+        This started with designing a single card first.
+      </p>
+      <p>
+        With the data avaliable to me, I came up with a couple ideas of things
+        that were new to me. in addition to just displaying the name and
+        pictures, I created a key:value pair of pokemon types and links to
+        images of the type. This way, I could make the cards show their types
+        with the actual type symbols (as SVGs) instead of just the words.
+      </p>
+      <p>
+        But this didn't really look good. So I decided to color the cards based
+        on the type. Single colors was easy, and I knocked it out in 5 minutes.
+        Then I realized that some pokemon are dual-type. So I made a little
+        helper function that output a gradient based on the colors of the types.
+        That was a fun one to build.
+      </p>
+      <p>
+        With this, the cards were looking OK enough, and I wanted to move on to
+        displaying all 1000+ of them.
+      </p>
+      <h2>Getting ALL the data.</h2>
+      <hr />
+      <p>
+        After reading some more of the API docs, I learned it only gives you a
+        list of pokemon names, and you have to get each pokemon's data from
+        their own API endpoint. I originally intended to collect all of the data
+        in one big API call, then manipulate it in one big object. Since that
+        would now involve making over 1000 calls at once, I changed my strategy.
+      </p>
+      <p>
+        A bit of thinking, and I realized I could just iterate over the list of
+        names, then each individual card could just make its own request to get
+        its data. Easy enough. But I still wasn't happy making 1000+ requests
+        when the page loaded.
+      </p>
+      <p>
+        So, I found something called virtual scrolling. Angular material even
+        had it built in. Once you set it up correctly, it's similar to the
+        normal way you iterate over a list and create a component for each
+        item... except it only creates that item if it is on the screen. Each
+        card will only contact the API if it exists! The perfect solution.
+        Instead of 1000+ API calls, it will only do roughly 20-30 at a time.
+      </p>
+      <h2>It couldn't be easy, could it?</h2>
+      <hr />
+      <p>
+        So. Virtual scrolling. An amazing thing, sure, except it has
+        limitations. Whether or not something shows up on the screen more or
+        less depends on the height of the viewport, and how tall each object is.
+        Because of this, it doesn't take the width into account at all. Each
+        item takes up an entire row, no matter how wide or narrow.
+      </p>
+      <p>
+        This wasn't going to work. My cards are narrow, and computer screens
+        aren't. At first I was really lost, then I realized the cards all have
+        the same height. And there's nothing saying I have to use each card to
+        iterate over. I had figured it out. Arrays in arrays. Iterate over the
+        "chunks" of cards, 4 or 5 to a row. In each row, just do a regular ngFor
+        to show the whole chunk.
+      </p>
+      <p>
+        I had to look up an efficient way to chunk a large array, but it didn't
+        take long. The problem was choosing how many card went in each row. I
+        knew there was probably a way to do it based on the width of the screen,
+        but didn't really know where to start. So it was time to dive into more
+        Javascript!
+      </p>
+      <p>
+        The idea of dividing the viewport width (minus sidebar) by card width
+        was simple enough. I just had to figure out how to get the viewport
+        width. Turns out it's fairly simple. Everything fell into place, and I
+        had rows of cards that perfectly fit the screen... when it loaded.
+        Resize the screen, and it all broke.
+      </p>
+      <p>
+        Then I found my freind HostListener. Incredibly useful thing, at least
+        in this situation. All I had to do was abstract the chunking-per-width
+        method, then re-run it anytime the viewport changes width. Worked like a
+        charm.
+      </p>
+      <h2>A job is never done.</h2>
+      <hr />
+      <p>
+        So that leaves us with what we have in front of us. Simple on the
+        outside (and I'm sure the inside as well, to experienced web devs), but
+        has more going on than it seems. I'm happy enough with it here, though I
+        have countless ideas I could add. Tracking which pokemon you have, auth
+        services to save your personal pokedex, filtering, etc. But I got out of
+        this project what I wanted to, for now. I can always add those another
+        day.
+      </p>
+      <p>
+        I have but one regret. Virtual scrolling allows for an option called
+        "AppendOnly". This makes the components that have loaded onces not be
+        destroyed when scrolling past them. This would lower the amount of API
+        calls if the user decided to scroll back over something they already
+        have. This sounded like a perfect idea, but it introduces a bug.
+      </p>
+      <p>
+        With AppendOnly on, if you scroll quickly, the cards swap positions
+        wildly. They jitter and fly all over the place. It's very quick, and
+        they end up in the correct positions in no time, but it's very
+        noticable. I'm not entirely sure if this is something internal in
+        Angular causing it, or how it interacts with my chunked array. But I'm
+        sure it will either take a long sit down with debugging, documentation,
+        or both. So I took it out for now.
+      </p>
+      <h2>The end, for now.</h2>
+      <hr />
+      <p>
+        If you're still reading this, thanks for making it this far. I've had an
+        absolute blast running into problem after problem and fixing each one.
+        If you have any questions about this project, the code is always hosted
+        on Github, and you can contact me at Cendeu@gmail.com as usual.
+      </p>
+    </div>
+  </mat-sidenav>
   <mat-sidenav-content>
     <app-pokecards></app-pokecards>
   </mat-sidenav-content>
